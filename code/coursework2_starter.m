@@ -4,15 +4,23 @@
 
 %% Step 0: Set up parameters, vlfeat, category list, and image paths.
 
-FEATURE = 'tiny image';
-%FEATURE = 'colour histogram';
+FEATURE = 'bag of sift';%'colour histogram', 'tiny image','bag of sift'
+IMAGE_SIZE =7;
+COLOUR_SPACE = "RGB";%RGB,HSV, GRAYSCALE, YCBR, NTSC
+QUANTISATION = 8; %16,32
+USE_NORM =  false;%normalization
+USE_MEAN = true; %Standardization 
+%DISTANCE = 'euclidean'; % cityblock,minkowski,L1,chisq,euclidean
+%DISTANCE = "L1"; %L1,chisq need double quotes
+DISTANCE = 'cityblock';
 
 CLASSIFIER = 'nearest neighbor';
+k=8;
 
 % Set up paths to VLFeat functions. 
 % See http://www.vlfeat.org/matlab/matlab.html for VLFeat Matlab documentation
 % This should work on 32 and 64 bit versions of Windows, MacOS, and Linux
-%run('vlfeat/toolbox/vl_setup')
+run('vlfeat/toolbox/vl_setup')
 
 data_path = '../data/';
 
@@ -68,13 +76,13 @@ switch lower(FEATURE)
         % square portion out of each image. Making the tiny images zero mean and
         % unit length (normalizing them) will increase performance modestly.
         
-        train_image_feats = get_tiny_images(train_image_paths);
-        test_image_feats  = get_tiny_images(test_image_paths);
+        train_image_feats = get_tiny_images(IMAGE_SIZE, train_image_paths,COLOUR_SPACE,USE_NORM,USE_MEAN);
+        test_image_feats  = get_tiny_images(IMAGE_SIZE, test_image_paths,COLOUR_SPACE,USE_NORM,USE_MEAN);
     case 'colour histogram'
         %You should allow get_colour_histograms to take parameters e.g.
         %quantisation, colour space etc.
-        train_image_feats = get_colour_histograms(train_image_paths);
-        test_image_feats  = get_colour_histograms(test_image_paths);
+        train_image_feats = get_colour_histograms(QUANTISATION,train_image_paths,COLOUR_SPACE,USE_NORM,USE_MEAN);
+        test_image_feats  = get_colour_histograms(QUANTISATION,test_image_paths,COLOUR_SPACE,USE_NORM,USE_MEAN);
      case 'bag of sift'
         % YOU CODE build_vocabulary.m
         if ~exist('vocab.mat', 'file')
@@ -124,7 +132,7 @@ switch lower(CLASSIFIER)
     % predicted_categories is an M x 1 cell array, where each entry is a string
     %  indicating the predicted category for each test image.
     % Useful functions: pdist2 (Matlab) and vl_alldist2 (from vlFeat toolbox)
-        predicted_categories = nearest_neighbor_classify(train_image_feats, train_labels, test_image_feats);
+        predicted_categories = nearest_neighbor_classify(k,train_image_feats, train_labels, test_image_feats,DISTANCE);
     case 'support vector machine'
         predicted_categories = svm_classify(train_image_feats, train_labels, test_image_feats);
 end

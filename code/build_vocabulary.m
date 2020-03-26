@@ -39,6 +39,39 @@ Useful functions:
   slower.
 %}
 
+
+N = size(image_paths, 1);
+BIN_SIZE = 10;
+vocab = zeros(vocab_size,128);
+%features = zeros(N,vocab_size);
+% cd('vlfeat/toolbox/');
+% addpath(genpath('vlfeat/toolbox/'));
+
+each = 10;
+descs = zeros(128,N*each);
+
+    for ii=1:N
+
+        I = imread(image_paths{ii});
+        %imshow(I);
+        img = rgb2gray(I);
+        img = im2single(img);
+
+
+    %     run('vlfeat/toolbox/sift/vl_dsift.m');
+        [~, SIFT_features] = vl_dsift(img,'Fast','Step',BIN_SIZE) ;
+
+        x = SIFT_features(:);
+%         x = reshape(SIFT_features,1,[]);
+%         disp(each * (ii-1) + 1 : each * ii);
+%         disp(x);
+         descs(:,each * (ii-1) + 1 : each * ii) = SIFT_features(:,1:each);
+
+    end
+   [C,A] = vl_kmeans(descs,vocab_size);
+   vocab = single(C);
+    disp(vocab);
+end
 % Load images from the training set. To save computation time, you don't
 % necessarily need to sample from all images, although it would be better
 % to do so. You can randomly sample the descriptors from each image to save
@@ -53,18 +86,10 @@ Useful functions:
 % images, cluster them with kmeans. The resulting centroids are now your
 % visual word vocabulary.
 
-N = size(image_paths, 1);
-descriptors = zeros(128,N);
-%features = zeros(N,vocab_size);
-for ii=1:N
-    
-    I = imread(image_paths{ii});
-    %imshow(I);
-    img = rgb2gray(I);
-    img = im2single(img);
-
-    [locations, SIFT_features] = vl_dsift(img,'fast') ;
-    plot(SIFT_features);
-    imshow(img);
-end
-end
+% 
+% STEPS:
+%   1. Load images
+%   2. Get sift feats from images
+%   3. 
+% 
+% 

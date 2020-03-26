@@ -20,7 +20,9 @@ k=8;
 % Set up paths to VLFeat functions. 
 % See http://www.vlfeat.org/matlab/matlab.html for VLFeat Matlab documentation
 % This should work on 32 and 64 bit versions of Windows, MacOS, and Linux
-run('vlfeat/toolbox/vl_setup')
+run('vlfeat/toolbox/vl_setup');
+
+
 
 data_path = '../data/';
 

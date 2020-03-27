@@ -1,4 +1,4 @@
-function output = kNN(k,train_image_feats, train_labels, test_image_feats,DISTANCE)
+function output = nearest_neighbor_classify(k,train_image_feats, train_labels, test_image_feats,DISTANCE)
     [test_rows test_cols] = size(test_image_feats);
     %[train_rows train_cols] = size(test_image_feats);
     

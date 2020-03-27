@@ -3,7 +3,7 @@
 %This function will sample SIFT descriptors from the training images,
 %cluster them with kmeans, and then return the cluster centers.
 
-function vocab = build_vocabulary( image_paths, vocab_size )
+function vocab = build_vocabulary( image_paths, vocab_size,STEP_SIZE,COLORSPACE)
 % The inputs are images, a N x 1 cell array of image paths and the size of 
 % the vocabulary.
 
@@ -39,38 +39,39 @@ Useful functions:
   slower.
 %}
 
-
+% vocab_size -> size of features
 N = size(image_paths, 1);
-BIN_SIZE = 10;
-vocab = zeros(vocab_size,128);
-%features = zeros(N,vocab_size);
-% cd('vlfeat/toolbox/');
-% addpath(genpath('vlfeat/toolbox/'));
+% BIN_SIZE = 10;
+% vocab = zeros(vocab_size,128);
+% STEP_SIZE = 75;
+% each = 10;
+% descs = zeros(128,N*each);
+feats = cell(1, size(image_paths, 1));
+for ii=1:N
+    I = imread(image_paths{ii});
+    img = rgb2gray(I);
+    img = im2single(img);
+%     [~, feats{1,ii}] = vl_dsift(img, 'Step', STEP_SIZE, 'Fast');
+    [~, feats{ii}] = vl_dsift(img,'Fast','Step',STEP_SIZE) ;
+    %         I = imread(image_paths{ii});
+%         %imshow(I);
+%         img = rgb2gray(I);
+%         img = im2single(img);
+%    %     run('vlfeat/toolbox/sift/vl_dsift.m');
+%         [~, SIFT_feats] = vl_dsift(img,'Fast','Step',BIN_SIZE) ;
+% 
+% %         x = SIFT_features(:);
+% %         x = reshape(SIFT_features,1,[]);
+% %         disp(each * (ii-1) + 1 : each * ii);
+% %         disp(x);
+%          descs(:,each * (ii-1) + 1 : each * ii) = SIFT_feats(:,1:each);
 
-each = 10;
-descs = zeros(128,N*each);
-
-    for ii=1:N
-
-        I = imread(image_paths{ii});
-        %imshow(I);
-        img = rgb2gray(I);
-        img = im2single(img);
-
-
-    %     run('vlfeat/toolbox/sift/vl_dsift.m');
-        [~, SIFT_features] = vl_dsift(img,'Fast','Step',BIN_SIZE) ;
-
-        x = SIFT_features(:);
-%         x = reshape(SIFT_features,1,[]);
-%         disp(each * (ii-1) + 1 : each * ii);
-%         disp(x);
-         descs(:,each * (ii-1) + 1 : each * ii) = SIFT_features(:,1:each);
-
-    end
-   [C,A] = vl_kmeans(descs,vocab_size);
-   vocab = single(C);
-    disp(vocab);
+end
+feats_mat = cell2mat(feats);
+feats_mat = single(feats_mat);
+[cclocations,~] = vl_kmeans(feats_mat,vocab_size);
+vocab = cclocations;
+disp(vocab);
 end
 % Load images from the training set. To save computation time, you don't
 % necessarily need to sample from all images, although it would be better
@@ -85,11 +86,3 @@ end
 % Once you have tens of thousands of SIFT features from many training
 % images, cluster them with kmeans. The resulting centroids are now your
 % visual word vocabulary.
-
-% 
-% STEPS:
-%   1. Load images
-%   2. Get sift feats from images
-%   3. 
-% 
-% 

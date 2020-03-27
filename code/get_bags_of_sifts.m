@@ -48,4 +48,35 @@ D = vl_alldist2(X,Y)
     yourself, but vl_alldist2 tends to be much faster.
 %}
 
-load('vocab.mat')
+load('vocab.mat');
+vocab_size = size(vocab, 1);
+N = size(image_paths, 1);
+
+STEP_SIZE = 5;
+for ii=1:N
+    I = imread(image_paths{ii});
+%    imshow(I);
+    img = rgb2gray(I);
+    img = im2single(img);
+%     imshow(img);
+    [~, feats] = vl_dsift(img,'Fast','Step',STEP_SIZE) ;
+    
+    feats_single = single(feats);
+    dists = vl_alldist2(feats_single, vocab);
+    
+    hist = get_hist(dists);
+    [image_feats(ii,:), ~] = histcounts(hist,vocab_size);
+%     [~, SIFT_feats] = vl_dsift(img,'Fast','Step',BIN_SIZE) ;
+%     descs(:,1:each) = SIFT_feats(:,1:each);
+% %     SIFT_feats = single(SIFT_feats);
+%     ind = knnsearch(vocab,descs);
+%     image_feats(ii,:) = histcounts(ind, vocab_size);
+% %     image_feats(ii,:) = getHistogram(img,10,'GRAYSCALE',false,true);
+end
+
+end
+
+function hist = get_hist(dists)
+ [~, inds] = min(dists, [], 2);
+ hist = inds;
+end

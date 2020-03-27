@@ -6,13 +6,15 @@
 
 FEATURE = 'bag of sift';%'colour histogram', 'tiny image','bag of sift'
 IMAGE_SIZE =7;
-COLOUR_SPACE = "RGB";%RGB,HSV, GRAYSCALE, YCBR, NTSC
+COLOUR_SPACE = "GRAYSCALE";%RGB,HSV, GRAYSCALE, YCBR, NTSC
 QUANTISATION = 8; %16,32
 USE_NORM =  false;%normalization
 USE_MEAN = true; %Standardization 
 %DISTANCE = 'euclidean'; % cityblock,minkowski,L1,chisq,euclidean
 %DISTANCE = "L1"; %L1,chisq need double quotes
 DISTANCE = 'cityblock';
+STEP_SIZE = 75;
+
 
 CLASSIFIER = 'nearest neighbor';
 k=8;
@@ -90,7 +92,7 @@ switch lower(FEATURE)
         if ~exist('vocab.mat', 'file')
             fprintf('No existing dictionary found. Computing one from training images\n')
             vocab_size = 50; % you need to test the influence of this parameter
-            vocab = build_vocabulary(train_image_paths, vocab_size); %Also allow for different sift parameters
+            vocab = build_vocabulary(train_image_paths, vocab_size,STEP_SIZE,COLOUR_SPACE); %Also allow for different sift parameters
             save('vocab.mat', 'vocab')
         end
         
@@ -99,6 +101,8 @@ switch lower(FEATURE)
             train_image_feats = get_bags_of_sifts(train_image_paths); %Allow for different sift parameters
             test_image_feats  = get_bags_of_sifts(test_image_paths); 
             save('image_feats.mat', 'train_image_feats', 'test_image_feats')
+        else
+            load('image_feats.mat');
         end
       case 'spatial pyramids'
           % YOU CODE spatial pyramids method

@@ -3,7 +3,7 @@
 %This function will sample SIFT descriptors from the training images,
 %cluster them with kmeans, and then return the cluster centers.
 
-function vocab = build_vocabulary( image_paths, vocab_size,STEP_SIZE,COLORSPACE)
+function vocab = build_vocabulary( image_paths, vocab_size,STEP_SIZE,COLORSPACE,BIN_SIZE)
 % The inputs are images, a N x 1 cell array of image paths and the size of 
 % the vocabulary.
 
@@ -40,38 +40,43 @@ Useful functions:
 %}
 
 % vocab_size -> size of features
+% add BIN_SIZE parameter
 N = size(image_paths, 1);
-% BIN_SIZE = 10;
-% vocab = zeros(vocab_size,128);
-% STEP_SIZE = 75;
-% each = 10;
-% descs = zeros(128,N*each);
+
 feats = cell(1, size(image_paths, 1));
+
+
 for ii=1:N
+    if(mod(ii,100)==0)
+       fprintf(" %d \n",ii); 
+    end
     I = imread(image_paths{ii});
-    img = rgb2gray(I);
-    img = im2single(img);
-%     [~, feats{1,ii}] = vl_dsift(img, 'Step', STEP_SIZE, 'Fast');
-    [~, feats{ii}] = vl_dsift(img,'Fast','Step',STEP_SIZE) ;
-    %         I = imread(image_paths{ii});
-%         %imshow(I);
-%         img = rgb2gray(I);
-%         img = im2single(img);
-%    %     run('vlfeat/toolbox/sift/vl_dsift.m');
-%         [~, SIFT_feats] = vl_dsift(img,'Fast','Step',BIN_SIZE) ;
-% 
-% %         x = SIFT_features(:);
-% %         x = reshape(SIFT_features,1,[]);
-% %         disp(each * (ii-1) + 1 : each * ii);
-% %         disp(x);
-%          descs(:,each * (ii-1) + 1 : each * ii) = SIFT_feats(:,1:each);
+    
+    if(COLORSPACE == "GRAYSCALE")
+        img = rgb2gray(I);
+        img = im2single(img);
+    elseif(COLORSPACE == "RGB")
+        img = getRGB_VALUES(I);
+%         img = im2single(I);
+    end
+    
+    
+    % DESCRIPTORS from sift features of the specific image
+    [~, f] = vl_dsift(img,'Fast','Step',STEP_SIZE) ;
+    feats{ii} = f;
 
 end
-feats_mat = cell2mat(feats);
-feats_mat = single(feats_mat);
-[cclocations,~] = vl_kmeans(feats_mat,vocab_size);
-vocab = cclocations;
-disp(vocab);
+
+vocab = cluster(feats,vocab_size);
+
+% disp(vocab);
+end
+
+function vocab = cluster(feats,vocab_size)
+    feats_mat = cell2mat(feats);
+    feats_mat = single(feats_mat);
+    [cclocations,~] = vl_kmeans(feats_mat,vocab_size);
+    vocab = cclocations;
 end
 % Load images from the training set. To save computation time, you don't
 % necessarily need to sample from all images, although it would be better

@@ -1,7 +1,7 @@
 % Implementated according to the starter code prepared by James Hays, Brown University
 % Michal Mackiewicz, UEA
 
-function image_feats = get_bags_of_sifts(image_paths)
+function image_feats = get_bags_of_sifts(image_paths,COLOR_SPACE,DISTANCE,BIN_SIZE,vocab)
 % image_paths is an N x 1 cell array of strings where each string is an
 % image path on the file system.
 
@@ -48,35 +48,61 @@ D = vl_alldist2(X,Y)
     yourself, but vl_alldist2 tends to be much faster.
 %}
 
-load('vocab.mat');
+% try histogram normalisation
+% imgHistNorm = imgHist./size(SIFT_features,2);
+
+% load('vocab.mat');
 vocab_size = size(vocab, 1);
 N = size(image_paths, 1);
 
 STEP_SIZE = 5;
+
+image_feats = zeros(N,vocab_size);
+
+
 for ii=1:N
+    if(mod(ii,200) == 0)
+       disp(ii); 
+    end
+    
     I = imread(image_paths{ii});
 %    imshow(I);
-    img = rgb2gray(I);
+    switch(COLOR_SPACE)
+        case("GRAYSCALE")
+            img = rgb2gray(I);
+        case("RGB")
+            img = getRGB_VALUES(I); 
+    end
+    
     img = im2single(img);
 %     imshow(img);
-    [~, feats] = vl_dsift(img,'Fast','Step',STEP_SIZE) ;
     
+    % DESCRIPTORS from sift features of the specific image
+    [~, feats] = vl_dsift(img,'Fast','Step',STEP_SIZE,'size',BIN_SIZE) ;
+    
+    % create the histogram of visual words
+    hist = get_hist(feats, vocab,DISTANCE);
+
+%     histNorm = hist - min(hist(:));
+%     histNorm = histNorm ./ max(histNorm(:));
+    
+    % set the visual words that corresponds to the current image (row)
+    [image_feats(ii,:), ~] = histcounts(hist,vocab_size,'Normalization', 'probability');
+
+end
+end
+
+
+% extract sift features from all the images
+function dists = extractAllSIFT(feats,vocab,DISTANCE)
     feats_single = single(feats);
-    dists = vl_alldist2(feats_single, vocab);
-    
-    hist = get_hist(dists);
-    [image_feats(ii,:), ~] = histcounts(hist,vocab_size);
-%     [~, SIFT_feats] = vl_dsift(img,'Fast','Step',BIN_SIZE) ;
-%     descs(:,1:each) = SIFT_feats(:,1:each);
-% %     SIFT_feats = single(SIFT_feats);
-%     ind = knnsearch(vocab,descs);
-%     image_feats(ii,:) = histcounts(ind, vocab_size);
-% %     image_feats(ii,:) = getHistogram(img,10,'GRAYSCALE',false,true);
+%     dists = vl_alldist2(feats_single, vocab,DISTANCE);
+    dists = vl_alldist2(feats_single,vocab,DISTANCE);    
 end
 
-end
-
-function hist = get_hist(dists)
- [~, inds] = min(dists, [], 2);
- hist = inds;
+% create the histogram with the extracted featrues
+function hist = get_hist(feats, vocab,DISTANCE)
+    dists = extractAllSIFT(feats,vocab,DISTANCE);
+    [~, inds] = min(dists, [], 2);
+    hist = inds;
 end

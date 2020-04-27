@@ -37,10 +37,10 @@
 5. construct a histogram with those values.
 	> It will be the histogram with SIFT features for Level 0 of the pyramid.
 	
-6. Create a matrix with the total levels of the pyramid 
-	6.1 Each level will have a number of quadrants
-	6.2 Each  quadrant will be represented with a histogram of its SIFT features.
-	6.3 Then each level will have those histograms concantated into a row, for the pyramid.
+6. Create a matrix with the total levels of the pyramid <br /> 
+	6.1 Each level will have a number of quadrants<br /> 
+	6.2 Each  quadrant will be represented with a histogram of its SIFT features.<br /> 
+	6.3 Then each level will have those histograms concantated into a row, for the pyramid.<br /> 
 	>In will result into a bigger histogram
 	
 7. Apply the appropriate weight to each level

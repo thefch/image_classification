@@ -31,8 +31,8 @@
 1. get images
 2. extract sift features from images
 3. get descriptors from extracted features
-4. find the minimum distance of the the extracted features and the ons from the already computed vocabulary 
-	`D = vl_alldist2(vocab',features)`
+4. find the minimum distance of the the extracted features and the ons from the already computed vocabulary <br /> 
+	`D = vl_alldist2(vocab',features)`<br /> 
 	`[~,ind] = min(D);`.
 5. construct a histogram with those values.
 	> It will be the histogram with SIFT features for Level 0 of the pyramid.

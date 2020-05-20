@@ -26,9 +26,9 @@ function output = nearest_neighbor_classify(k,train_image_feats, train_labels, t
         prediction_label_id = mode(table(:,2));
 		predicted_label = train_labels{prediction_label_id*100};
         predictions(i,:) = predicted_label;
-        %if (mod(i, 1000) == 0)
-        %    fprintf("Completed training example: %d \n", i);
-        %end
+%         if (mod(i, 200) == 0)
+%             fprintf("Completed training example: %d \n", i);
+%         end
 
     end
     

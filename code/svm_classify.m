@@ -49,21 +49,34 @@ Useful functions:
 categories = unique(train_labels); 
 num_categories = length(categories);
 num_train = size(train_image_feats, 1);
-num_test = size(test_image_feats, 1);
+
 dim = size(test_image_feats, 2);
 Ws = zeros(num_categories, dim);
 Bs = zeros(num_categories, 1);
-LAMBDA = 0.001;
 for ii=1:num_categories
-%     fprintf(" svm classify %d \n",ii);
+    
+    % set all the labels to -1
     labels = ones(num_train,1).*-1;
+    
+    % set the currect label to 1
+    % it will distinguish the current image with the rest.
+    % (this label) vs (the rest)
     labels(strcmp(categories{ii}, train_labels)) = 1;
+    
+    % use svm with specific LAMBDA value
     [W, B] = vl_svmtrain(train_image_feats', labels, LAMBDA, 'MaxNumIterations', 1e5);
+    % the lambda valuw will determine the distance of the values that will
+    % be considred when classifyng, the lower the further 
+    
+    % copy the weights and offset of each class
     Ws(ii,:) = W';
     Bs(ii) = B;
 end
 
-confidences = Ws*test_image_feats'+repmat(Bs,1,num_test);
+images_N = size(test_image_feats, 1);
+
+confidences = Ws*test_image_feats'+repmat(Bs,1,images_N);
 [~, indices] = max(confidences);
+% indeices hold the classified class of each image
 predicted_categories = categories(indices);
 end

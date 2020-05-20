@@ -3,7 +3,7 @@
 % %This function will sample SIFT descriptors from the training images,
 % %cluster them with kmeans, and then return the cluster centers.
 % 
- function vocab = build_vocabulary( image_paths, VOCAB_SIZE,STEP_SIZE,COLORSPACE,BIN_SIZE)
+ function vocab = build_vocabulary( image_paths, VOCAB_SIZE,STEP_SIZE,COLORSPACE,BIN_SIZE,USE_PHOW,USE_NORM)
 % % The inputs are images, a N x 1 cell array of image paths and the size of 
 % % the vocabulary.
 % 
@@ -43,20 +43,38 @@ N = size(image_paths, 1);
 feats = cell(1, size(image_paths, 1));
 STEP_SIZE = 10;
 for ii=1:N
-    if (mod(ii,200)==0)
-%         fprintf(" %d \n",ii);
-    end
-    if (COLORSPACE == "GRAYSCALE")
-        img = im2single(rgb2gray(imread(image_paths{ii})));
-    else
-        img = get_color_values(imread(image_paths{ii}),COLORSPACE);
-    end
+    % debugging
+%     if (mod(ii,200)==0)
+% %          fprintf(" %d \n",ii);
+%     end
     
-    [~, features] = vl_dsift(img, 'Fast', 'Step', STEP_SIZE);
+    I = imread(image_paths{ii});
+     
+    if(USE_PHOW)
+        [~,features] = get_phow(I,COLORSPACE,STEP_SIZE);    
+    else
+        if (COLORSPACE == "GRAYSCALE")
+            img = im2single(rgb2gray(I));
+        else
+            img = get_color_values(I,COLORSPACE);
+        end
+        [~, features] = vl_dsift(img, 'Fast', 'Step', STEP_SIZE);
+        features = single(features);
+    end
+        
+    % normalize features
+    if(USE_NORM)
+        tmp = sqrt(sum(features.^2, 2));
+        features = features ./ repmat(tmp, [1 size(features,2)]);
+    end
+
     feats{ii} = features;
 end
     
-[centers, ~] = vl_kmeans(single(cell2mat(feats)), VOCAB_SIZE);
+% cluster features into a vocabulary of visual words
+% it will cluster the features into groups, each group represents different
+% class
+[centers, ~] = vl_kmeans(cell2mat(feats), VOCAB_SIZE);
 vocab = single(centers');
 end
  
@@ -73,4 +91,3 @@ end
 % % Once you have tens of thousands of SIFT features from many training
 % % images, cluster them with kmeans. The resulting centroids are now your
 % % visual word vocabulary.
-

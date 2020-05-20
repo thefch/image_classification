@@ -1,0 +1,147 @@
+FEATURE,VOCAB_SIZE,FEATURE_STEP_SIZE,STEP_SIZE,COLOUR_SPACE,CLASSIFIER,k/LAMBDA,accuracy
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 1, 0.287333 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 2, 0.310000 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 3, 0.267333 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 4, 0.277333 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 5, 0.260667 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 6, 0.250667 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 7, 0.228000 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 8, 0.229333 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 9, 0.220667 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 10, 0.218000 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 11, 0.211333 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 12, 0.215333 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 13, 0.207333 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 14, 0.206000 
+fisher encoding, 100, 5, 10, GRAYSCALE, nearest neighbor, 15, 0.202000 
+fisher encoding, 1000, 5, 10, GRAYSCALE, nearest neighbor, 1, 0.140000 
+fisher encoding, 1000, 5, 10, GRAYSCALE, nearest neighbor, 2, 0.159333 
+fisher encoding, 1000, 5, 10, GRAYSCALE, nearest neighbor, 3, 0.123333 
+fisher encoding, 1000, 5, 10, GRAYSCALE, nearest neighbor, 4, 0.116000 
+fisher encoding, 1000, 5, 10, GRAYSCALE, nearest neighbor, 5, 0.106667 
+fisher encoding, 1000, 5, 10, GRAYSCALE, nearest neighbor, 6, 0.100667 
+fisher encoding, 1000, 5, 10, GRAYSCALE, nearest neighbor, 7, 0.095333 
+
+
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 1, 0.358000 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 2, 0.356667 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 3, 0.335333 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 4, 0.338000 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 5, 0.320000 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 6, 0.317333 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 7, 0.315333 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 8, 0.312000 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 9, 0.310000 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 10, 0.306667 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 11, 0.300000 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 12, 0.297333 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 13, 0.294667 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 14, 0.298000 
+fisher encoding, 100, 5, 10, RGB, nearest neighbor, 15, 0.290000 
+
+----------
+
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 10.000000, 0.516000 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 1.000000, 0.581333 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.100000, 0.665333 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.010000, 0.725333 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.001000, 0.720667 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.000100, 0.716000 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.000010, 0.718000 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.000110, 0.721333 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.000010, 0.721333 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.000020, 0.723333 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.000030, 0.716667 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.000040, 0.719333 
+fisher encoding, 100, 5, 10, GRAYSCALE, support vector machine, 0.000050, 0.720000 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 10.000000, 0.516000 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 1.000000, 0.581333 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.100000, 0.661333 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.010000, 0.718667 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.001000, 0.720000 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.000100, 0.722000 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.000010, 0.717333 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.000110, 0.716667 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.000010, 0.718667 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.000020, 0.722667 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.000030, 0.718667 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.000040, 0.721333 
+fisher encoding, 1000, 5, 10, GRAYSCALE, support vector machine, 0.000050, 0.714667 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 10.000000, 0.527333 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 1.000000, 0.546667 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.100000, 0.676667 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.010000, 0.762000 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.001000, 0.763333 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.000100, 0.764667 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.000010, 0.764000 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.000110, 0.760000 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.000010, 0.760667 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.000020, 0.756667 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.000030, 0.754667 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.000040, 0.760667 
+fisher encoding, 100, 5, 10, RGB, support vector machine, 0.000050, 0.762000 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 10.000000, 0.526667 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 1.000000, 0.554667 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.100000, 0.683333 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.010000, 0.761333 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.001000, 0.756000 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.000100, 0.760667 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.000010, 0.760000 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.000110, 0.762667 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.000010, 0.758000 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.000020, 0.762667 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.000030, 0.761333 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.000040, 0.762667 
+fisher encoding, 1000, 5, 10, RGB, support vector machine, 0.000050, 0.760000 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 10.000000, 0.512000 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 1.000000, 0.564000 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.100000, 0.680000 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.010000, 0.719333 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.001000, 0.721333 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.000100, 0.720000 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.000010, 0.715333 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.000110, 0.718000 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.000010, 0.717333 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.000020, 0.724000 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.000030, 0.724667 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.000040, 0.726000 
+fisher encoding, 100, 5, 100, GRAYSCALE, support vector machine, 0.000050, 0.721333 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 10.000000, 0.511333 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 1.000000, 0.574667 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.100000, 0.666000 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.010000, 0.717333 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.001000, 0.719333 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.000100, 0.716000 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.000010, 0.719333 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.000110, 0.722667 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.000010, 0.723333 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.000020, 0.722000 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.000030, 0.720667 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.000040, 0.722667 
+fisher encoding, 1000, 5, 100, GRAYSCALE, support vector machine, 0.000050, 0.721333 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 10.000000, 0.527333 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 1.000000, 0.573333 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.100000, 0.674667 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.010000, 0.755333 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.001000, 0.759333 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.000100, 0.760000 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.000010, 0.766667 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.000110, 0.758000 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.000010, 0.762000 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.000020, 0.764000 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.000030, 0.758667 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.000040, 0.764000 
+fisher encoding, 100, 5, 100, RGB, support vector machine, 0.000050, 0.758667 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 10.000000, 0.527333 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 1.000000, 0.535333 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.100000, 0.668000 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.010000, 0.760667 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.001000, 0.765333 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.000100, 0.761333 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.000010, 0.753333 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.000110, 0.756667 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.000010, 0.762667 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.000020, 0.761333 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.000030, 0.762667 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.000040, 0.759333 
+fisher encoding, 1000, 5, 100, RGB, support vector machine, 0.000050, 0.758000 

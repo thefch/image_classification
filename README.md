@@ -1,4 +1,5 @@
-# ComputerVision_cw2
+# Image Classification
+### Computer Vision Coursework
 
 # **Steps for SIFT extraction**
 

@@ -18,11 +18,13 @@
 
 They were used for the feature extraction of <ins>Bag of Sift</ins> and <ins>Spatial Pyramid</ins>.
 
-<img src="presentation\SIFTexplaining.png" alt="SIFTexplaining" style="zoom:50%;" />
+<img src="pages-assets\images\SIFTexplaining.png" alt="SIFTexplaining" style="zoom:50%;" />
 
-<img src="presentation\siftExampleOnline.png" alt="SIFTexplaining" style="zoom:40%;" />
+<img src="pages-assets\images\siftExampleOnline.png" alt="siftExampleOnline" style="zoom:40%;" />
 
-<img src="presentation\sift.png" alt="SIFTexplaining" style="zoom:70%;"  />SIFT features between 2 images with the same scene 
+<img src="pages-assets\images\sift.png" alt="sift" style="zoom:70%;"  />
+
+​                                         <em>SIFT features between 2 images with the same scene </em>
 
 
 
@@ -44,7 +46,60 @@ The color spaces with more than 1 channel had a different approach than the gray
 
 
 
-<img src="presentation\colorChannels.png" alt="SIFTexplaining" style="zoom:50%;"  />
+<img src="presentation\colorChannels.png" alt="colorChannels" style="zoom:50%;"  />
+
+
+
+## Spatial Pyramid
+
+* Collection of orderless feature histograms
+* Each level consists of a grid with histograms
+* Histograms are created by the local SIFT descriptors on each quadrant
+* For each level a weight is applied
+
+<img src="pages-assets\images\spatial_pyramidHistExample.png" alt="spatial_pyramidHistExample" style="zoom:80%;"  />
+
+
+
+## Additional scene recognition method: 
+
+###                                  <ins>Fisher Encoding</ins>
+
+ 
+
+<em>Introduced in Image Classification with the Fisher Vector: Theory and Practice (Perronnin et al. 2007)</em>
+
+> Build upon the Bag Of Visual Words method
+
+##### Fisher Vocabulary:
+
+1. Extract SIFT descriptors from each image.
+2. Apply Gaussian Mixture Model (GMM) to the obtained features.
+   * Instead of clustering
+   * returns the means, covariances, priors that are used as a vocabulary
+
+
+
+##### Fisher Vector:
+
+1. Extract SIFT descriptors 
+2. Compute the fisher vector of each image by using their SIFT features and the already computed vocabulary
+   * Each vector represents an image
+
+![Fisher](pages-assets\images\Fisher.png)
+
+
+
+##### Comparison with BoS:
+
+<ins>Advantages:</ins>
+
+* It can be computed with much smaller vocabularies
+
+<ins>Disadvantages:</ins>
+
+* Takes more storage
+  * (2*D+1)*N –1
 
 
 
@@ -61,14 +116,14 @@ The color spaces with more than 1 channel had a different approach than the gray
 3. get descriptors from extracted features
 
 4. cluster the descriptors
-    
+   
     > will find similar features in each image and create visual words for each of it
     
 5. obtain dictionary with visual words.
 
     
 
-<img src="presentation\bagofwords.jpg" alt="SIFTexplaining" style="zoom:50%;" />
+<img src="pages-assets\images\bagofwords.jpg" alt="SIFTexplaining" style="zoom:50%;" />
 
 ​                                        <em>Image illustrating the process of creating a vocabulary of visual words</em> 
 
@@ -88,18 +143,22 @@ The color spaces with more than 1 channel had a different approach than the gray
 5. the visual words with the highest frequency will is the class of that image (prediction) 
 
 > **visual words** -> a set of numbers representing a feature 
->
-> 
+
+---
 
 ## Steps for Spatial Pyramid
 
 `spatial_pyramid.m`
 1. get images
+
 2. extract sift features from images
+
 3. get descriptors from extracted features
+
 4. find the minimum distance of the the extracted features and the ons from the already computed vocabulary <br /> 
 	`D = vl_alldist2(vocab',features)`<br /> 
 	`[~,ind] = min(D);`.
+	
 5. construct a histogram with those values.
 	
 	> It will be the histogram with SIFT features for Level 0 of the pyramid.
@@ -112,8 +171,13 @@ The color spaces with more than 1 channel had a different approach than the gray
 	>In will result into a bigger histogram
 	
 7. Apply the appropriate weight to each level
+
+   
+
+<img src="pages-assets\images\spatial_pyramid.png" alt="spatial_pyramid" style="zoom:90%;" />
+
 ---
-## Classification**
+## Classification
 
 #### 1. kNN
 #### 2. SVM
@@ -124,15 +188,18 @@ The color spaces with more than 1 channel had a different approach than the gray
 
 ---
 
----
-
-
-
 # Results
 
+## Bag of Sift
+
+​																		 **kNN**
+
+![knnBoSsift](pages-assets\graphs\knnBoSsift.PNG)
 
 
 
+​																		 **SVM**
 
+![svmBoSsift](C:\Users\fanos\Desktop\University\Computer Vision\image_classification_cw\pages-assets\graphs\svmBoSsift.PNG)
 
-
+[RGB Confusion Matrix](pages-assets\html\bos_svm_rgb_vocab1000_ss200_fss5\index.html)

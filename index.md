@@ -207,4 +207,78 @@ The color spaces with more than 1 channel had a different approach than the gray
 
 ![svmBoSsift](pages-assets\graphs\svmBoSsift.PNG)
 
-[		RGB Confusion Matrix](pages-assets\html\bos_svm_rgb_vocab1000_ss200_fss5\index.html)                                                                      [GRAYSCALE Confusion Matrix](pages-assets\html\bos_svm_gray_vocab1000_ss10_fss5\index.html)													
+[RGB Confusion Matrix](pages-assets\html\bos_svm_rgb_vocab1000_ss200_fss5\index.html)
+
+[GRAYSCALE Confusion Matrix](pages-assets\html\bos_svm_gray_vocab1000_ss10_fss5\index.html)													
+
+
+
+![knnsvmBoSphow](pages-assets\graphs\knnsvmBoSphow.PNG)
+
+[RGB Confusion Matrix](pages-assets\html\bos_phow1_knn_rgb_vocab1000_ss10_fss5\index.html)
+
+[GRAYSCALE Confusion Matrix](pages-assets\html\bos_phow1_svm_rgb_vocab1000_ss10_fss5\index.html)		
+
+---
+
+
+
+## Spatial Pyramid
+
+​																		 **kNN**
+
+![knnSPsift](pages-assets\graphs\knnSPsift.PNG)
+
+[RGB Confusion Matrix](pages-assets\html\sp_knn_rgb_vocab400_ss10_fss5_level2\index.html)
+
+[GRAYSCALE Confusion Matrix](pages-assets\html\sp_knn_gray_vocab200_ss200_fss5_level2\index.html)
+
+
+
+​																		 **SVM**
+
+![svmSPsift](C:\Users\fanos\Desktop\University\Computer Vision\image_classification_cw\pages-assets\graphs\svmSPsift.PNG)
+
+[RGB Confusion Matrix](pages-assets\html\sp_svm_rgb_vocab1000_ss10_fss5_level2\index.html)
+
+[GRAYSCALE Confusion Matrix](pages-assets\html\sp_svm_gray_vocab1000_ss10_fss5_level3\index.html)
+
+---
+
+
+
+## Fisher Vector
+
+​																		 **kNN**
+
+![knnFISHER](pages-assets\graphs\knnFISHER.PNG)
+
+[RGB Confusion Matrix](pages-assets\html\fisher_knn_rgb_vocab100_ss75_fs5\index.html)
+
+[GRAYSCALE Confusion Matrix](pages-assets\html\fisher_knn_gray_vocab100_ss75_fs5\index.html)
+
+
+
+​																		 **SVM**
+
+![svmFISHER](pages-assets\graphs\svmFISHER.PNG)
+
+[RGB Confusion Matrix](pages-assets\html\fisher_svm_rgb_vocab100_ss75_fs5\index.html)
+
+[GRAYSCALE Confusion Matrix](pages-assets\html\fisher_svm_gray_vocab100_ss75_fs5\index.html)
+
+
+
+---
+
+
+
+# Conclusion
+
+* The less the step size the slower and more memory MATLAB was using
+* Spatial Pyramid gave good results till level 2 with RGB color space
+  * After level 2, not really better results, much more computational power
+* Feature Step Size of 5 seemed to worked fine with all methods
+* Fisher Vector method worked better with smaller vocabulary
+* kNN classifier was really slow in comparison with SVM 
+  * Too much data

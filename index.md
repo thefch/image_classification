@@ -207,4 +207,4 @@ The color spaces with more than 1 channel had a different approach than the gray
 
 ![svmBoSsift](pages-assets\graphs\svmBoSsift.PNG)
 
-[		RGB Confusion Matrix](pages-assets\html\bos_svm_rgb_vocab1000_ss200_fss5\index.html)                                                                      								 [GRAYSCALE Confusion Matrix](pages-assets\html\bos_svm_gray_vocab1000_ss10_fss5\index.html)													
+[		RGB Confusion Matrix](pages-assets\html\bos_svm_rgb_vocab1000_ss200_fss5\index.html)                                                                      [GRAYSCALE Confusion Matrix](pages-assets\html\bos_svm_gray_vocab1000_ss10_fss5\index.html)													

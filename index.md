@@ -200,6 +200,6 @@ The color spaces with more than 1 channel had a different approach than the gray
 
 ​																		 **SVM**
 
-![svmBoSsift](C:\Users\fanos\Desktop\University\Computer Vision\image_classification_cw\pages-assets\graphs\svmBoSsift.PNG)
+![svmBoSsift](pages-assets\graphs\svmBoSsift.PNG)
 
 [RGB Confusion Matrix](pages-assets\html\bos_svm_rgb_vocab1000_ss200_fss5\index.html)

@@ -166,7 +166,7 @@ The color spaces with more than 1 channel had a different approach than the gray
 6. Create a matrix with the total levels of the pyramid <br /> 
 	6.1 Each level will have a number of quadrants<br /> 
 	6.2 Each  quadrant will be represented with a histogram of its SIFT features.<br /> 
-	6.3 Then each level will have those histograms concantated into a row, for the pyramid.<br /> 
+	6.3 Then each level will have those histograms concantated into a row, for the pyramid.<br />
 	
 	>In will result into a bigger histogram
 	
@@ -177,7 +177,12 @@ The color spaces with more than 1 channel had a different approach than the gray
 <img src="pages-assets\images\spatial_pyramid.png" alt="spatial_pyramid" style="zoom:90%;" />
 
 ---
+
+
+
 ## Classification
+
+
 
 #### 1. kNN
 #### 2. SVM
@@ -202,4 +207,4 @@ The color spaces with more than 1 channel had a different approach than the gray
 
 ![svmBoSsift](pages-assets\graphs\svmBoSsift.PNG)
 
-[RGB Confusion Matrix](pages-assets\html\bos_svm_rgb_vocab1000_ss200_fss5\index.html)
+[		RGB Confusion Matrix](pages-assets\html\bos_svm_rgb_vocab1000_ss200_fss5\index.html)                                                                      								 [GRAYSCALE Confusion Matrix](pages-assets\html\bos_svm_gray_vocab1000_ss10_fss5\index.html)													
